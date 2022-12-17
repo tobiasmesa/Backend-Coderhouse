@@ -32,7 +32,7 @@ export default class ProductManager {
   // @desc    Add a product to file
   // @access  Public
 
-  addProduct(title, description, price, thumbnail, code, stock) {
+  addProduct( {title, description, price, status, thumbnail, code, stock, category} ) {
     const products = this.#readFile(); // Take products from file
     const findCode = products.find((product) => product.code === code); // Look for a product with same code given
     if (!findCode) {
@@ -40,9 +40,11 @@ export default class ProductManager {
       products.push({
         title,
         description,
+        status,
         price,
         thumbnail,
         code,
+        category,
         stock,
         id: this.#getMaxId() + 1,
       });

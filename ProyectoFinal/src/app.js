@@ -1,5 +1,6 @@
 import express from 'express';
-import router from '../routes/routerCarts.js';
+import routerCarts from '../routes/routerCarts.js';
+import routerProducts from '../routes/routerProducts.js'
 
 const PORT =  8080
 const app = express()
@@ -12,8 +13,8 @@ const server = app.listen(PORT, () => {
 })
 
 
-app.use("/api/carts", router)
-
+app.use("/api/products", routerProducts)
+app.use("/api/carts", routerCarts)
 
 
 server.on('error', (err) => console.log(err))

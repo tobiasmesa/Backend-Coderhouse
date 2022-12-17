@@ -4,7 +4,8 @@ const router = Router()
 const carts = []
 
 
-router.get('/', (req, res) => {
+router.get('/:pid', (req, res) => {
+    console.log(req.params.pid)
     res.json(carts)
     res.status(200)
 })
