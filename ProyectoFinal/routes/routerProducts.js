@@ -34,14 +34,27 @@ router.get('/:pid', (req, res) => {
 router.post('/', (req, res) => {
   const { title , description,  code, price, status, stock, category, thumbnails } = req.body
 
-  if( title && description && price && code && stock && category)
+  if ( title && description && price && code && stock && category)
   {
     pm.addProduct({ title, description, code, price, status, stock, category, thumbnails })
-    res.status(200).send("Agregado!")
+    res.status(200).send("Added!")
   } else {
-    res.status(400).send("No se ha agregado!")
+    res.status(400).send("Sorry, we couldn't add that product.")
   }
 })
+
+router.put("/:pid", (req, res) => {
+  const id = req.params.pid;
+  const data = req.body;
+  pm.updateProduct(Number(id), data.key, data.value).then((product) =>
+    res.status(200).json(product)
+  );
+});
+
+router.delete("/:pid", (req, res) => {
+  const { pid } = req.params;
+  pm.deleteProduct(Number(pid)).then((products) => res.json(products));
+});
 
 
 export default router

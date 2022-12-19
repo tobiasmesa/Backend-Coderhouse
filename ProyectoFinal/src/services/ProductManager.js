@@ -88,7 +88,6 @@ export default class ProductManager {
   // @desc   Update an object from file
   // @params id: number to apply, key: element of object, value: new value
   // @access Public
-
   updateProduct(id, key, value) {
     let products = this.#readFile();
     const product = products.find((producto) => producto.id === id);
