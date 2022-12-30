@@ -29,10 +29,7 @@ server.on('error', (err) => console.log(err))
 
 app.use(express.static(__dirname+'/public'))
 
-app.use((req, res, next) => {
-    req.io = socketServer
-    next()
-  })  
+
 // - Endpoints Cart & Products
 app.use("/api/products", routerProducts)
 app.use("/api/carts", routerCarts)

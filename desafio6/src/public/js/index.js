@@ -1,9 +1,8 @@
 const socket = io();
 
-socket.on('products', (data) => {
-
+socket.on('sendProducts', (data) => {
     renderList(data)
-  
+
   })
   
   const renderList = (productList) => {
