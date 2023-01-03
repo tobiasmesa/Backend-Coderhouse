@@ -7,7 +7,6 @@ export const webSockets = (socketServer) => {
             socketServer.emit("sendProducts", products);
         })
     })
-
    
 }
 
